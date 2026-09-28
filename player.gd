@@ -25,12 +25,14 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_just_pressed("ui_accept") and not $coyote.is_stopped():
 		velocity.y = JUMP_VELOCITY
 	
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
+		$sprite.play("default")
 		velocity.x = direction * SPEED
+		$sprite.flip_h = bool(sign(direction + 1))
+		print(direction)
 	else:
+		$sprite.stop()
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	if not $sun_timer.is_stopped():

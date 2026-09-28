@@ -30,6 +30,7 @@ script = ExtResource("1_i3pqv")
 sprite_frames = SubResource("SpriteFrames_xevdw")
 frame = 1
 frame_progress = 0.5876027
+flip_h = true
 
 [node name="collision" type="CollisionShape2D" parent="." unique_id=2051780574]
 shape = SubResource("CapsuleShape2D_xevdw")
