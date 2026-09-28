@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://s7xou6n5d8v0"]
+
+[ext_resource type="Script" uid="uid://bxx7s07bn03md" path="res://objects/cloud_platform.gd" id="1_1othc"]
+[ext_resource type="Texture2D" uid="uid://cpfjl8w5i2qh5" path="res://kenney_pixel-platformer/Tiles/tile_0153.png" id="1_e801p"]
+[ext_resource type="Texture2D" uid="uid://cry1omxgnht1n" path="res://kenney_pixel-platformer/Tiles/tile_0154.png" id="2_1othc"]
+[ext_resource type="Texture2D" uid="uid://ccfbd3unx5imw" path="res://kenney_pixel-platformer/Tiles/tile_0155.png" id="3_13tss"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xevdw"]
+size = Vector2(54, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e801p"]
+size = Vector2(54, 1)
+
+[node name="cloud" type="StaticBody2D" unique_id=1548314218]
+script = ExtResource("1_1othc")
+
+[node name="sprite" type="Node2D" parent="." unique_id=1692223164]
+
+[node name="left" type="TextureRect" parent="sprite" unique_id=518757706]
+offset_right = 18.0
+offset_bottom = 18.0
+texture = ExtResource("1_e801p")
+
+[node name="middle" type="TextureRect" parent="sprite" unique_id=779246500]
+offset_left = 18.0
+offset_right = 36.0
+offset_bottom = 18.0
+texture = ExtResource("2_1othc")
+
+[node name="right" type="TextureRect" parent="sprite" unique_id=1106660999]
+offset_left = 36.0
+offset_right = 54.0
+offset_bottom = 18.0
+texture = ExtResource("3_13tss")
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=1227922442]
+position = Vector2(27, 2)
+shape = SubResource("RectangleShape2D_xevdw")
+one_way_collision = true
+
+[node name="area" type="Area2D" parent="." unique_id=1970376272]
+collision_mask = 2
+
+[node name="collision" type="CollisionShape2D" parent="area" unique_id=1033141414]
+position = Vector2(27, -0.5)
+shape = SubResource("RectangleShape2D_e801p")
+
+[node name="shake" type="Timer" parent="." unique_id=855491183]
+wait_time = 0.75
+one_shot = true
+
+[node name="disappear" type="Timer" parent="." unique_id=679919216]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="body_entered" from="area" to="." method="_on_player_detect_body_entered"]
+[connection signal="body_exited" from="area" to="." method="_on_player_detect_body_exited"]
+[connection signal="timeout" from="shake" to="." method="_on_shake_timeout"]
+[connection signal="timeout" from="disappear" to="." method="_on_disappear_timeout"]

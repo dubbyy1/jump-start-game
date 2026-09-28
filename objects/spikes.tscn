@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://16ksf8mtohtm"]
+
+[ext_resource type="Texture2D" uid="uid://0niqae4yvjfh" path="res://kenney_pixel-platformer/Tiles/tile_0068.png" id="1_oovyk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xevdw"]
+size = Vector2(18, 9)
+
+[node name="spikes" type="Area2D" unique_id=1470346080]
+collision_layer = 8
+collision_mask = 0
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=191658134]
+texture = ExtResource("1_oovyk")
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=1641568973]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_xevdw")

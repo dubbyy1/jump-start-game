@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bgmpq4hxwqr52"]
+
+[ext_resource type="Texture2D" uid="uid://j3eht147eos" path="res://kenney_pixel-platformer/Tiles/tile_0131.png" id="1_2iksx"]
+[ext_resource type="Texture2D" uid="uid://dnraxdu3bngcc" path="res://kenney_pixel-platformer/Tiles/tile_0111.png" id="2_r1rfj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xevdw"]
+size = Vector2(18, 36)
+
+[node name="flag" type="Area2D" unique_id=1500801981]
+collision_layer = 4
+collision_mask = 0
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=469262697]
+position = Vector2(9, 18)
+shape = SubResource("RectangleShape2D_xevdw")
+
+[node name="pole" type="TextureRect" parent="." unique_id=1602833074]
+offset_top = 18.0
+offset_right = 18.0
+offset_bottom = 36.0
+texture = ExtResource("1_2iksx")
+
+[node name="flag" type="TextureRect" parent="." unique_id=1290372543]
+offset_right = 18.0
+offset_bottom = 18.0
+texture = ExtResource("2_r1rfj")
